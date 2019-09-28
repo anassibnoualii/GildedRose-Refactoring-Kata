@@ -36,4 +36,21 @@ public class GildedRoseTest {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
     }
+
+    @Test
+    public void AgedBrieQualityIncreaseWhenItGetOldWithSelinPositive() {
+        Item[] items = new Item[] { new Item("Aged Brie", 2, 2) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(3, app.items[0].quality);
+    }
+
+    @Test
+    public void AgedBrieQualityIncreaseWhenItGetOldWithSelinNegative() {
+        Item[] items = new Item[] { new Item("Aged Brie", -2, 2) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(4, app.items[0].quality);
+    }
+
 }
