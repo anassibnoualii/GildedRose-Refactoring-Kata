@@ -75,4 +75,28 @@ public class GildedRoseTest {
         app.updateQuality();
         assertEquals(2, app.items[0].quality);
     }
+
+    @Test
+    public void BackstageQualityIncreaseByThreeWhenSelInIsLessThanOrEqualToFive() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 2, 2) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(5, app.items[0].quality);
+    }
+
+    @Test
+    public void BackstageQualityIncreaseByTwoWhenSelInIsLessThanOrEqualToTeenAndMoreThanFive() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 8, 2) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(4, app.items[0].quality);
+    }
+
+    @Test
+    public void BackstageQualityDroppedToZeroWhenSelInNegative() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", -2, 2) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+    }
 }
