@@ -53,4 +53,10 @@ public class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void qualityOfAnItemIsNeverMoreThan50() {
+        Item[] items = new Item[] { new Item("Tanjia", 2, 51) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+    }
 }
