@@ -59,4 +59,20 @@ public class GildedRoseTest {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
     }
+
+    @Test
+    public void SulfurasIsNeverDecreaseInQualityWhenSellInPostive() {
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 2, 2) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(2, app.items[0].quality);
+    }
+
+    @Test
+    public void SulfurasIsNeverDecreaseInQualityWhenSellInNegative() {
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", -2, 2) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(2, app.items[0].quality);
+    }
 }
