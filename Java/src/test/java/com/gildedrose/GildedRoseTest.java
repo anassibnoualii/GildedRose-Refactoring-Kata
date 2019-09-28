@@ -29,4 +29,11 @@ public class GildedRoseTest {
         app.updateQuality();
         assertEquals(2, app.items[0].quality);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void qualityOfAnItemIsNeverNegative() {
+        Item[] items = new Item[] { new Item("Tanjia", 2, -1) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+    }
 }
